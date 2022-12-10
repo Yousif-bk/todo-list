@@ -1,0 +1,14 @@
+.button-icon {
+    padding: 0 14px;
+    border: none;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+.button-icon:hover{
+  cursor: pointer;
+  border-radius: 30%;
+}
+.icon-color{
+color: #fff;
+}

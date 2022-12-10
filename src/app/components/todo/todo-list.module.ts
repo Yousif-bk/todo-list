@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoRoutingModule } from './todo-routing.module';
-
+import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { TodoRoutingModule } from './todo-routing.module';
   ],
   imports: [
     CommonModule,
-    TodoRoutingModule
+    TodoRoutingModule,
+    AngularMaterialModule
   ]
 })
 export class TodoListModule { }

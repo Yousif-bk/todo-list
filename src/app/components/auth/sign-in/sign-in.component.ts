@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  /* Forms */
+  signInFormGroup: FormGroup;
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForms();
   }
 
+  initForms() {
+    // Construct signIn form
+    this.signInFormGroup = this.formBuilder.group({
+      emailCtrl: [
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/),
+        ]),
+      ],
+      passwordCtrl: [null, Validators.required],
+    });
+  }
+  // Form Controls
+  get f(): { [key: string]: AbstractControl } {
+    return this.signInFormGroup.controls;
+  }
 }

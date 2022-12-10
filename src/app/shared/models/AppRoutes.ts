@@ -8,6 +8,11 @@ export const AppRoutes = {
             full: "sign-in",
             main: "sign-in",
             sub: ""
+        },
+        signUp: {
+            full: "sign-up",
+            main: "sign-up",
+            sub: ""
         }
     },
 
