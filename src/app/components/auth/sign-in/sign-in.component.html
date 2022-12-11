@@ -16,9 +16,11 @@
                 </mat-form-field>
             </p>
             <div class="button">
-                <button mat-button color="primary">Sign Up</button>
+                <button mat-raised-button color="primary" [class.spinner]="uiState.isLoading"
+                    [disabled]="uiState.isLoading" (click)="signIn()">
+                    Sign In
+                </button>
             </div>
-
         </form>
     </mat-card-content>
 </mat-card>
