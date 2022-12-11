@@ -15,7 +15,10 @@ export class AuthService {
     public router: Router,
   ) { }
 
-  // Sign in with email/password
+  /**
+   * Sign in with email/password
+   * @param authReq
+   */
   async signIn(authReq: AuthReq) {
       await this.afAuth
       .signInWithEmailAndPassword(authReq.email, authReq.password);
@@ -28,22 +31,29 @@ export class AuthService {
   }
 
 
-  // Sign up with email/password
+  /**
+   *
+   * @param authReq Sign up with email/password/full name
+   */
   async signUp(authReq: AuthReq) {
        await this.afAuth
         .createUserWithEmailAndPassword(authReq.email, authReq.password).then((result) =>{
           result.user?.updateProfile({
             displayName:authReq.fullName
           })
+          this.router.navigate([AppRoutes.Todo.main]);
         })
     }
 
 
   // Sign out
-  async signOut() {
-    await this.afAuth.signOut();
-    localStorage.removeItem('user');
-    this.router.navigate(['sign-in']);
+    async signOut(): Promise<any> {
+    // Clear JWT from localstorage
+    localStorage.clear();
+    // Update logged in status
+    this.setIsLoggedIn(false);
+    // Navigate user back to signIn page
+    await this.router.navigate([AppRoutes.Auth.signIn.full]);
   }
 
   private isTokenAvailable(): boolean {

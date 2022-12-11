@@ -11,6 +11,8 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class SignUpComponent implements OnInit {
   uiState={
     isLoading: false,
+    isSubmitting: false,
+    action: "Error"
   }
   /* Forms */
   signUpFormGroup: FormGroup;
@@ -49,14 +51,18 @@ export class SignUpComponent implements OnInit {
 
   signUp() {
     this.uiState.isLoading = true
+    this.uiState.isSubmitting = true
     if (!this.signUpFormGroup.valid) {
+      this.uiState.isLoading = false
       return
     }
     this.authService.signUp(this.signUpFormGroup.value).then((result) =>{
       this.uiState.isLoading = false;
+      this.uiState.isSubmitting = false;
     }).catch((error) =>{
-      this.openSnackBar(error.message,"Error")
+      this.openSnackBar(error.message,this.uiState.action)
       this.uiState.isLoading = false;
+      this.uiState.isSubmitting = false;
     })
   }
 }

@@ -12,6 +12,8 @@ export class SignInComponent implements OnInit {
 
   uiState = {
     isLoading:false,
+    isSubmitting:false,
+    action: "Error"
   }
   /* Forms */
   signInFormGroup: FormGroup;
@@ -54,14 +56,18 @@ export class SignInComponent implements OnInit {
   //Sign in
   signIn(){
     this.uiState.isLoading = true;
+    this.uiState.isSubmitting = true;
     if (!this.signInFormGroup.valid) {
+      this.uiState.isLoading = false
       return;
     }
     this.authService.signIn(this.signInFormGroup.value).then((result) => {
       this.uiState.isLoading = false;
+      this.uiState.isSubmitting = false;
     }).catch((error) =>{
-      this.openSnackBar(error.message,"Error")
+      this.openSnackBar(error.message,this.uiState.action)
       this.uiState.isLoading = false;
+      this.uiState.isSubmitting = false;
     })
   }
 }
