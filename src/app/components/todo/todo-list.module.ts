@@ -5,8 +5,10 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoRoutingModule } from './todo-routing.module';
 import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     TodoListComponent,
@@ -17,7 +19,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TodoRoutingModule,
     AngularMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    RouterModule,
+     AngularFirestoreModule,
   ]
 })
 export class TodoListModule { }

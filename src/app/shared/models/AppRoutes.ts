@@ -29,5 +29,10 @@ export const AppRoutes = {
             main: "new",
             sub: ""
         },
+        edit: {
+            full: "todo/edit/",
+            main: "edit/:id",
+            sub: ":id"
+         }
     },
 }

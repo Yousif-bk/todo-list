@@ -19,6 +19,7 @@ import { AuthModule } from './components/auth/auth.module';
     AppRoutingModule,
     SharedModule,
     AuthModule,
+    TodoListModule,
     BrowserAnimationsModule,
   ],
   providers: [],

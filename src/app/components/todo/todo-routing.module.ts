@@ -9,14 +9,18 @@ const routes: Routes = [
   {
     path: "",
     children: [
-       {
-          path: AppRoutes.Todo.sub,
-          component: TodoListComponent,
-       },
-       {
+      {
+        path: AppRoutes.Todo.sub,
+        component: TodoListComponent,
+      },
+      {
         path: AppRoutes.Todo.new.main,
         component: TodoFormComponent,
-     },
+      },
+      {
+        path: AppRoutes.Todo.edit.main,
+        component: TodoFormComponent
+      },
     ]
   }
 ]

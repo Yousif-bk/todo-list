@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AppRoutes } from 'src/app/shared/models/AppRoutes';
+import { Todo } from 'src/app/shared/models/Task';
+import { AppService } from 'src/app/shared/services/app/app.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,16 +11,41 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  uiState = {
-    isSubmitting:false,
-    isLoading:false
-  }
- /* Forms */
- todoListFormGroup: FormGroup;
-  constructor() { }
+// Ui State
+uiState = {
+  isLoading:false,
+}
+  todo: Todo[]
+  displayedColumns: string[] = ['title', 'note', 'priority','action'];
+  constructor(private appService: AppService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.getTasksList();
   }
 
-  createTask(){}
+  getTasksList() {
+    this.uiState.isLoading = true
+    this.appService.getTasksList().subscribe(res => {
+      this.todo = res.map(e => {
+        this.uiState.isLoading = false
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as {}
+        } as Todo;
+      })
+    })
+  }
+
+  // set Task
+  setSelectedTask(todo: Todo[]){
+    this.appService.setSelectedTask(todo)
+    this.router.navigate([AppRoutes.Todo.edit.main])
+  }
+  // Remove
+  removeTask(todo: Todo) {
+    if (confirm('Are You' + todo.title)) {
+      this.appService.deleteTask(todo)
+    }
+  }
 }
