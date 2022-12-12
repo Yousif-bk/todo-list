@@ -31,7 +31,7 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef>Action</th>
           <td mat-cell *matCellDef="let element">
-            <button (click)="setSelectedTask(element)" mat-icon-button color="primary">
+            <button [routerLink]="'edit/'+ element.id"  mat-icon-button color="primary">
               <mat-icon>edit</mat-icon>
             </button>
             <button (click)="removeTask(element)" mat-icon-button color="warn">

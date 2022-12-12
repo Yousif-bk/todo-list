@@ -16,6 +16,7 @@ export class TodoFormComponent implements OnInit {
   uiState = {
     isSubmitting:false,
     isLoading:false,
+    isCreate:false,
     priorityOption:[
       { id: 1,title:"High"},
       { id: 2, title:"Low"},
@@ -33,7 +34,7 @@ export class TodoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForms();
-    this.getTask();
+     this.getTask();
   }
 
 
@@ -64,18 +65,19 @@ export class TodoFormComponent implements OnInit {
 
   // get Task
   getTask(){
-    // const id = this.route.snapshot.paramMap.get('id')
-    // this.appService.getTask(id).subscribe(res =>{
-    //   console.log(res,"Resss")
-    //   // this.todoFormGroup.patchValue(res)
-    // })
-
-    this.appService.getSelectedTask().subscribe((res)=>{
-      this.setSavedProductData(res)
+    const id = this.route.snapshot.paramMap.get('id')
+    if(!id){
+      this.uiState.isCreate = true;
+      return;
+    }
+    this.appService.getTask(id).subscribe(res =>{
+      this.setSavedTaskData(res);
     })
   }
+
+
  // Set product data to form
-  private setSavedProductData(savedTask: any): void {
+  private setSavedTaskData(savedTask: any): void {
     // Consturct form patch data
     const patchData: Todo = {
       title: savedTask.title,
@@ -86,7 +88,7 @@ export class TodoFormComponent implements OnInit {
   }
 
   updateTask(){
-    const id = "1"//this.route.snapshot.paramMap.get('id')
+    const id = this.route.snapshot.paramMap.get('id')
     this.uiState.isLoading = true;
     this.appService.updateTask(this.todoFormGroup.value, id).then(() =>{
       this.uiState.isLoading = false;

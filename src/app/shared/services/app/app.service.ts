@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { AppRoutes } from '../../models/AppRoutes';
 import { Todo } from '../../models/Task';
+import { Firestore, getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, DocumentData, CollectionReference, onSnapshot, QuerySnapshot } from 'firebase/firestore'
+
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  setTask = new BehaviorSubject<Todo[]>([]);
   constructor(
     private angularFirestoreModule: AngularFirestore,
     private router:Router) { }
@@ -21,12 +22,13 @@ export class AppService {
   }
 
   getTask(taskId: any) {
-    console.log("taskId",taskId)
     return this.angularFirestoreModule
       .collection('Task-collection')
       .doc(taskId)
       .valueChanges();
   }
+
+
   // Create Task
   createTask(todo: Todo) {
     return new Promise<any>((resolve, reject) => {
@@ -55,13 +57,5 @@ export class AppService {
       .collection('Task-collection')
       .doc(todo.id)
       .delete()
-  }
-
-  setSelectedTask(todo: Todo[]): void {
-    this.setTask.next(todo);
-  }
-
-  getSelectedTask() {
-    return this.setTask;
   }
 }

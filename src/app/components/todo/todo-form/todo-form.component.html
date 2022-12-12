@@ -41,9 +41,13 @@
             </p>
             <!-- On Submit -->
             <div class="button">
-                <button mat-raised-button color="primary" [class.spinner]="uiState.isLoading"
+              <button *ngIf="uiState.isCreate" mat-raised-button color="primary" [class.spinner]="uiState.isLoading"
+              [disabled]="uiState.isLoading" (click)="createTask()">
+              Create
+          </button>
+                <button *ngIf="!uiState.isCreate" mat-raised-button color="primary" [class.spinner]="uiState.isLoading"
                     [disabled]="uiState.isLoading" (click)="updateTask()">
-                    Create
+                    Update
                 </button>
             </div>
         </form>

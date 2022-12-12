@@ -37,11 +37,6 @@ uiState = {
     })
   }
 
-  // set Task
-  setSelectedTask(todo: Todo[]){
-    this.appService.setSelectedTask(todo)
-    this.router.navigate([AppRoutes.Todo.edit.main])
-  }
   // Remove
   removeTask(todo: Todo) {
     if (confirm('Are You' + todo.title)) {
