@@ -45,10 +45,12 @@ export class SignUpComponent implements OnInit {
     return this.signUpFormGroup.controls;
   }
 
+  // Open Alert
   openSnackBar(message: string, action:string) {
     this._snackBar.open(message, action);
   }
 
+  // Sign Up
   signUp() {
     this.uiState.isLoading = true
     this.uiState.isSubmitting = true

@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-title>	<mat-icon>assignment_turned_in</mat-icon> Create Task</mat-card-title>
+    <mat-card-title>	<mat-icon>assignment_turned_in</mat-icon>{{uiState.isCreate ? 'Create Task' : 'Update Task'}} </mat-card-title>
     <mat-card-content>
         <form [formGroup]="todoFormGroup">
             <!-- Title Contro; -->
@@ -32,10 +32,10 @@
                         <mat-option *ngFor="let item of uiState.priorityOption"
                             [value]="item.title">{{item.title}}</mat-option>
                     </mat-select>
-                    <mat-label>Select</mat-label>
+                    <mat-label>Priority</mat-label>
                     <mat-error
                         *ngIf="(uiState.isSubmitting && todoFormGroup.get('priority')?.hasError('required') || todoFormGroup.get('priority')?.touched && todoFormGroup.get('priority')?.hasError('required'))">
-                        priority is <strong>required</strong>
+                        Priority is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
             </p>
@@ -46,8 +46,9 @@
                       <mat-select formControlName="status" required>
                           <mat-option>-- None --</mat-option>
                           <mat-option value="ToDo" selected>To-Do</mat-option>
+                          <mat-option value="Done" selected>Done</mat-option>
                       </mat-select>
-                      <mat-label>Select</mat-label>
+                      <mat-label>Status</mat-label>
                   </mat-form-field>
               </p>
             <!-- On Submit -->

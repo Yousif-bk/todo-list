@@ -48,6 +48,7 @@ export class TodoFormComponent implements OnInit {
     });
   }
 
+  // Create New Task
   createTask(){
     this.uiState.isLoading = true;
     this.uiState.isSubmitting = true;
@@ -77,7 +78,7 @@ export class TodoFormComponent implements OnInit {
   }
 
 
- // Set product data to form
+ // Set Task data to form
   private setSavedTaskData(savedTask: any): void {
     // Consturct form patch data
     const patchData: Todo = {
@@ -89,6 +90,7 @@ export class TodoFormComponent implements OnInit {
     this.todoFormGroup.patchValue(patchData);
   }
 
+  // Update Taks
   updateTask(){
     const id = this.route.snapshot.paramMap.get('id')
     this.uiState.isLoading = true;

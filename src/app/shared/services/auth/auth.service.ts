@@ -20,14 +20,17 @@ export class AuthService {
    * @param authReq
    */
   async signIn(authReq: AuthReq) {
-      await this.afAuth
+    await this.afAuth
       .signInWithEmailAndPassword(authReq.email, authReq.password);
-      this.afAuth.authState.subscribe((user) => {
-        if (user) {
-          localStorage.setItem(LocallyStoredItemsKeys.TOKEN, user.refreshToken);
-          this.router.navigate([AppRoutes.Todo.main]);
-        }
-      });
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        localStorage.setItem(LocallyStoredItemsKeys.TOKEN, user.refreshToken);
+        // Set authenticated user flag
+        this.setIsLoggedIn(true);
+        this.router.navigate([AppRoutes.Todo.main]);
+
+      }
+    });
   }
 
 
@@ -36,18 +39,18 @@ export class AuthService {
    * @param authReq Sign up with email/password/full name
    */
   async signUp(authReq: AuthReq) {
-       await this.afAuth
-        .createUserWithEmailAndPassword(authReq.email, authReq.password).then((result) =>{
-          result.user?.updateProfile({
-            displayName:authReq.fullName
-          })
-          this.router.navigate([AppRoutes.Todo.main]);
+    await this.afAuth
+      .createUserWithEmailAndPassword(authReq.email, authReq.password).then((result) => {
+        result.user?.updateProfile({
+          displayName: authReq.fullName
         })
-    }
+        this.router.navigate([AppRoutes.Todo.main]);
+      })
+  }
 
 
   // Sign out
-    async signOut(): Promise<any> {
+  async signOut(): Promise<any> {
     // Clear JWT from localstorage
     localStorage.clear();
     // Update logged in status

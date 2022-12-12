@@ -1,13 +1,5 @@
 
 <div class="container" *ngIf="!uiState.isLoading" >
-  <mat-card>
-    <mat-list role="list" style="height: 20px;">
-      <mat-list-item class="listitem" (click)="setStatus('ALL')" [class.active]="uiState.selectedStatus === 'ALL'" role="listitem">ALL</mat-list-item>
-      <mat-list-item class="listitem" (click)="setStatus('TODO')"  [class.active]="uiState.selectedStatus === 'TODO'"role="listitem">TODO</mat-list-item>
-      <mat-list-item  class="listitem" (click)="setStatus('Done')" [class.active]="uiState.selectedStatus === 'Done'"  role="listitem">Done</mat-list-item>
-    </mat-list>
-  </mat-card>
-
   <div *ngFor="let item of todo">
     <mat-card  class="example-card">
       <mat-card-header>
@@ -30,6 +22,7 @@
 
 </div>
 
+<!-- Loader -->
  <div *ngIf="uiState.isLoading">
     <div class="wrapper">
       <div class="spinner">

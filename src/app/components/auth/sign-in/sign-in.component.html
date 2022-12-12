@@ -1,21 +1,24 @@
 <mat-card>
     <mat-card-title>Sign In</mat-card-title>
+    <div class="sign-up-label">
+        <p>New User ? <strong [routerLink]="['/sign-up']">Sign Up</strong></p>
+    </div>
     <mat-card-content>
         <form [formGroup]="signInFormGroup">
             <p>
-                <!-- Email Contro; -->
+                <!-- Email Control -->
                 <mat-form-field appearance="outline">
                     <mat-label>E-mail</mat-label>
                     <input type="text" matInput placeholder="Email" formControlName="email">
 
                     <!-- Validation Message -->
                     <mat-error
-                    *ngIf="(uiState.isSubmitting && signInFormGroup.get('email')?.hasError('required') || signInFormGroup.get('email')?.touched && signInFormGroup.get('email')?.hasError('required'))">
-                    Email is <strong>required</strong>
-                </mat-error>
-                <mat-error *ngIf="uiState.isSubmitting  && signInFormGroup.get('email')?.hasError('pattern')">
-                    Please enter a valid email address
-                  </mat-error>
+                        *ngIf="(uiState.isSubmitting && signInFormGroup.get('email')?.hasError('required') || signInFormGroup.get('email')?.touched && signInFormGroup.get('email')?.hasError('required'))">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="uiState.isSubmitting  && signInFormGroup.get('email')?.hasError('pattern')">
+                        Please enter a valid email address
+                    </mat-error>
                 </mat-form-field>
             <p>
                 <!-- Password Control -->
@@ -24,9 +27,9 @@
                     <input type="password" matInput placeholder="Password" formControlName="password">
                     <!-- Validation Message -->
                     <mat-error
-                    *ngIf="(uiState.isSubmitting && signInFormGroup.get('password')?.hasError('required') || signInFormGroup.get('password')?.touched && signInFormGroup.get('password')?.hasError('required'))">
-                    Password is <strong>required</strong>
-                </mat-error>
+                        *ngIf="(uiState.isSubmitting && signInFormGroup.get('password')?.hasError('required') || signInFormGroup.get('password')?.touched && signInFormGroup.get('password')?.hasError('required'))">
+                        Password is <strong>required</strong>
+                    </mat-error>
                 </mat-form-field>
             </p>
 

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     SignUpComponent,
@@ -18,6 +19,7 @@ import { environment } from 'src/environments/environment';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
+    RouterModule,
     AngularFirestoreModule
   ]
 })
