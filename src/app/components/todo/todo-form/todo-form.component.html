@@ -19,8 +19,8 @@
                 <input type="text" matInput placeholder="Note" formControlName="note">
                 <!-- Validation Message -->
                 <mat-error
-                    *ngIf="(uiState.isSubmitting && todoFormGroup.get('password')?.hasError('required') || todoFormGroup.get('password')?.touched && todoFormGroup.get('password')?.hasError('required'))">
-                    Password is <strong>required</strong>
+                    *ngIf="(uiState.isSubmitting && todoFormGroup.get('note')?.hasError('required') || todoFormGroup.get('note')?.touched && todoFormGroup.get('note')?.hasError('required'))">
+                    Note is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
 
@@ -39,6 +39,17 @@
                     </mat-error>
                 </mat-form-field>
             </p>
+
+                <!-- status Option -->
+                <p>
+                  <mat-form-field appearance="outline">
+                      <mat-select formControlName="status" required>
+                          <mat-option>-- None --</mat-option>
+                          <mat-option value="ToDo" selected>To-Do</mat-option>
+                      </mat-select>
+                      <mat-label>Select</mat-label>
+                  </mat-form-field>
+              </p>
             <!-- On Submit -->
             <div class="button">
               <button *ngIf="uiState.isCreate" mat-raised-button color="primary" [class.spinner]="uiState.isLoading"

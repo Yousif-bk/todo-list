@@ -3,4 +3,5 @@ export interface Todo {
     title: string;
     note: string;
     priority: string
+    status: string
   }

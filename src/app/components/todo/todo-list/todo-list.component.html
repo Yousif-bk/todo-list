@@ -1,9 +1,18 @@
 
 <div class="container" *ngIf="!uiState.isLoading" >
+  <mat-card>
+    <mat-list role="list" style="height: 20px;">
+      <mat-list-item class="listitem" (click)="setStatus('ALL')" [class.active]="uiState.selectedStatus === 'ALL'" role="listitem">ALL</mat-list-item>
+      <mat-list-item class="listitem" (click)="setStatus('TODO')"  [class.active]="uiState.selectedStatus === 'TODO'"role="listitem">TODO</mat-list-item>
+      <mat-list-item  class="listitem" (click)="setStatus('Done')" [class.active]="uiState.selectedStatus === 'Done'"  role="listitem">Done</mat-list-item>
+    </mat-list>
+  </mat-card>
+
   <div *ngFor="let item of todo">
     <mat-card  class="example-card">
       <mat-card-header>
-        <mat-card-subtitle [ngClass]="item.priority ==='Low' ? 'card-title-low' : 'card-title-high'">{{item.priority}}</mat-card-subtitle>
+         <mat-icon [ngClass]="item.priority ==='Low' ? 'priority-low' : 'priority-high'">label_important</mat-icon>
+        <mat-card-subtitle [ngClass]="item.status ==='ToDo' ? 'to-do' : 'done'">{{item.status}}</mat-card-subtitle>
         <mat-card-title >{{item.title}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>

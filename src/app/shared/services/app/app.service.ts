@@ -45,6 +45,7 @@ export class AppService {
       .collection('Task-collection')
       .doc(id)
       .update({
+        status: todo.status,
         title: todo.title,
         note: todo.note,
         priority: todo.priority

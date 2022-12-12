@@ -44,6 +44,7 @@ export class TodoFormComponent implements OnInit {
       title: [null, Validators.required],
       note: [null, Validators.required],
       priority: [null, Validators.required],
+      status: [null, Validators.required],
     });
   }
 
@@ -82,7 +83,8 @@ export class TodoFormComponent implements OnInit {
     const patchData: Todo = {
       title: savedTask.title,
       note: savedTask.note,
-      priority: savedTask.priority
+      priority: savedTask.priority,
+      status: savedTask.status
     }    // Patch the form data
     this.todoFormGroup.patchValue(patchData);
   }

@@ -14,6 +14,7 @@ export class TodoListComponent implements OnInit {
 // Ui State
 uiState = {
   isLoading:false,
+  selectedStatus: '',
 }
   todo: Todo[]
   displayedColumns: string[] = ['title', 'note', 'priority','action'];
@@ -23,6 +24,13 @@ uiState = {
   ngOnInit(): void {
     this.getTasksList();
   }
+
+  setStatus(status: string){
+    console.log(status);
+
+    this.uiState.selectedStatus = status
+  }
+
 
   getTasksList() {
     this.uiState.isLoading = true
