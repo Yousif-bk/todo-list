@@ -34,7 +34,7 @@ uiState = {
 
   getTasksList() {
     this.uiState.isLoading = true
-    this.appService.getTasksList().subscribe(res => {
+    this.appService.getTasksList().pipe().subscribe(res => {
       this.todo = res.map(e => {
         this.uiState.isLoading = false
         return {

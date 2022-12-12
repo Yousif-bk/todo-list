@@ -10,9 +10,22 @@ import { Firestore, getFirestore, collection, addDoc, getDocs, deleteDoc, doc, u
   providedIn: 'root'
 })
 export class AppService {
+  public Tasks  = new BehaviorSubject<Todo[]>([]);
   constructor(
     private angularFirestoreModule: AngularFirestore,
     private router:Router) { }
+
+
+
+
+  setTasks(task: Todo[]){
+    this.Tasks.next(task)
+  }
+
+  getTaskss(){
+    return this.Tasks;
+  }
+
 
   // Get all Task
   getTasksList() {
