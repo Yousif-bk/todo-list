@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  selected ="";
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -15,5 +15,9 @@ export class HeaderComponent implements OnInit {
 
   signOut(){
     this.authService.signOut();
+  }
+
+  setSelected(active: string){
+    this.selected = active
   }
 }

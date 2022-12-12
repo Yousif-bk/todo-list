@@ -1,10 +1,19 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>Todo</span>
-      <a mat-button="" routerlink="guides">Guides</a>
-      <span class="example-spacer" ></span>
-      <button (click)="signOut()" class="button-icon"  mat-menu-item>
-        <mat-icon  class="icon-color">power_settings_new</mat-icon>
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
+  <mat-toolbar-row>
+    <span>Todo</span>
+    <a mat-button="" (click)="setSelected('add')" [class.active]="selected === 'add'" [routerLink]="'todo-list/new'">Add
+      Task</a>
+    <a mat-button="" class="active" (click)="setSelected('list')" [class.active]="selected === 'list'"
+      [routerLink]="'todo-list'">Tasks List</a>
+    <span class="example-spacer"></span>
+    <button (click)="signOut()" class="button-icon" mat-menu-item>
+      <mat-icon class="icon-color">power_settings_new</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="container">
+  <div>
+    <h2 class="text-style">TODO Application</h2>
+    <p class="text-style">It's DoTo Application You Can Add, Delete, Update Your Daily Note and Tranck Them </p>
+  </div>
+</div>

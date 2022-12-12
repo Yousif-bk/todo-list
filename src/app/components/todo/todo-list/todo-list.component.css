@@ -2,25 +2,45 @@ table {
   width: 70%;
   margin-top: 20px
 }
+.example-card {
+  min-width: 400px;
+  max-width: 400px;
+}
 
-.container {
+/* .container {
   margin-top: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-/* .container {
+} */
+.container {
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
   justify-content: center;
   gap: 30px;
-} */
+}
 .button-container{
   margin-right: 63%;
 }
 
+.card-title-high{
+  background-color: red;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2px;
+  font-size: 11x;
+}
+.card-title-low{
+  background-color: green;
+  color: #fff;
+  border-radius: 5px;
+  padding: 2px;
+  text-align: center;
+  font-size: 11x;
+}
 /* Loader */
 .wrapper {
   display: flex;
@@ -64,3 +84,47 @@ table {
     transform: scale(0.87);
   }
 }
+
+
+/* <div class="button-container">
+  <button
+      mat-raised-button
+      class="demo-button">
+    Add Task
+  </button>
+</div>
+
+<table mat-table  [dataSource]="todo" class="mat-elevation-z8 demo-table">
+  <!-- Priority Column -->
+  <ng-container matColumnDef="priority">
+    <th mat-header-cell *matHeaderCellDef>Priority</th>
+    <td mat-cell *matCellDef="let element">{{element.priority}}</td>
+  </ng-container>
+
+  <!-- Title Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let element">{{element.title}}</td>
+  </ng-container>
+
+  <!-- Note Column -->
+  <ng-container matColumnDef="note">
+    <th mat-header-cell *matHeaderCellDef>Note</th>
+    <td mat-cell *matCellDef="let element">{{element.note}}</td>
+  </ng-container>
+
+  <!-- Action -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+      <button [routerLink]="'edit/'+ element.id"  mat-icon-button color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button (click)="removeTask(element)" mat-icon-button color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> */

@@ -12,3 +12,22 @@
 .icon-color{
 color: #fff;
 }
+
+
+mat-toolbar {
+  box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
+}
+
+
+.container {
+ text-align: center;
+ padding: 20px;
+ background-color: aliceblue;
+}
+
+.text-style{
+  font-family: Monospace;
+}
+.active{
+  background-color: rgba(0,0,0,.12)
+}
